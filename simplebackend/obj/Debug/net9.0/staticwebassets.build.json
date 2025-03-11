@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "H09IvsWfHKAfObDQy5KR8wjDuKgL7PwVfBd1ROdhIUw=",
+  "Source": "simplebackend",
+  "BasePath": "_content/simplebackend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
