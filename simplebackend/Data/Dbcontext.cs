@@ -58,6 +58,7 @@ namespace simplebackend.Data
             modelBuilder.Entity<Friendships>(entity =>
             {
                 entity.HasKey(e => e.Friendship_id);
+
                 entity.HasOne(f => f.User)
                     .WithMany(u => u.Friendships)
                     .HasForeignKey(f => f.User_id)
@@ -69,7 +70,6 @@ namespace simplebackend.Data
                     .OnDelete(DeleteBehavior.Restrict); 
                 entity.HasIndex(f => new { f.User_id, f.Friend_id }).IsUnique();
             });
-
         }
     }
 }
