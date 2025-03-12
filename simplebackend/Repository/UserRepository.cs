@@ -40,6 +40,7 @@ namespace Repository
             return user;
         }
 
+
         public async Task<User> DeleteUser(User user)
         {
             _context.Users.Remove(user);
@@ -71,10 +72,23 @@ namespace Repository
         {
             return await _context.Friendships
                 .Where(f => f.Friend_id == userId)
-                .Select(f => f.User_id)
+                .Include(f => f.User)
+                .Select(f => f.User)
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<Conversations>> GetConversationsAsync(int userId)
+        {
+            return await _context.Conversations
+                .Where(c => c.User1_id == userId || c.User2_id == userId)
+                .ToListAsync();
+        }
 
+        public async Task<IEnumerable<Messages>> GetMessagesAsync(int conversationId)
+        {
+            return await _context.Messages
+                .Where(m => m.Conversation_id == conversationId)
+                .ToListAsync();
+        }
     }
 }
